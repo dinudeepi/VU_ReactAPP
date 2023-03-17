@@ -6,6 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function NavScrollExample() {
+
   return (
     <Navbar fixed='top'  bg="light" expand="lg">
       <Container fluid>
@@ -44,7 +45,7 @@ function NavScrollExample() {
               className="me-2"
               aria-label="Search"
             />
-            <Button  variant="outline-success">Search</Button>
+            <Button id='btnSearch' variant="outline-success">Search</Button>
           </Form>
         </Navbar.Collapse>
       </Container>

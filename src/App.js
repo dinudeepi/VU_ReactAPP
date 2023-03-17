@@ -23,6 +23,14 @@ import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
+
+import physics from './data/physics.json';
+import chemistry from './data/chemistry.json';
+import computer from './data/computer.json';
+import maths from './data/maths.json';
+import india from './data/india.json';
+import geography from './data/geography.json';
+
  
 function App() {
 
@@ -30,30 +38,98 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState('');
 
+  // const fetchData = () => {
+  //   setJson([]);
+  //   console.log(physics);
+  //   var url = "http://122.166.154.2:2023/search?term=" + message
+  //   setIsLoading(true)
+  //   fetch(url, {
+  //     mode: 'cors',
+  //     headers: {
+  //       'Access-Control-Allow-Origin':'*'
+  //     }
+  //   })
+  //     .then(response => {
+  //       setTimeout(() => {
+          
+  //       setIsLoading(false)
+  //       }, 5000);
+  //       //console.log(response.json());
+  //       return response.json()
+  //     })
+  //     .then(data => {
+  //       setIsLoading(false)
+  //       console.log(data);
+  //       setJson(data)
+  //     })
+  // }
+
+  // const faculties =()=>{
+  //   JSON.parse(message).map(item =>{
+  //     const newArray = []
+  //     for(let i of item){
+  //        newArray.push(i.value)
+  //     }
+  //     console.log(newArray);
+  //     return newArray
+
+  // })};
+
+  const newFac=()=>{
+    const arr = []
+    Object.keys(message).forEach(key => arr.push({name: key, value: message[key]}))
+  }
+
   const fetchData = () => {
     setJson([]);
-    var url = "http://122.166.154.2:1818/search?term=" + message
-    setIsLoading(true)
-    fetch(url, {
-      mode: 'cors',
-      headers: {
-        'Access-Control-Allow-Origin':'*'
-      }
-    })
-      .then(response => {
-        setTimeout(() => {
+    console.log(physics);
+    if(message.startsWith("phy"))
+    {
+      setJson(physics)
+    }
+    if(message.startsWith("chem"))
+    {
+      setJson(chemistry)
+    }
+    if(message.startsWith("com"))
+    {
+      setJson(computer)
+    }
+    if(message.startsWith("geo"))
+    {
+      setJson(geography)
+    }
+    if(message.startsWith("ind"))
+    {
+      setJson(india)
+    }
+    if(message.startsWith("mat"))
+    {
+      setJson(maths)
+    }
+   
+    // setIsLoading(true)
+    // fetch(url, {
+    //   mode: 'cors',
+    //   headers: {
+    //     'Access-Control-Allow-Origin':'*'
+    //   }
+    // })
+    //   .then(response => {
+    //     setTimeout(() => {
           
-        setIsLoading(false)
-        }, 5000);
-        //console.log(response.json());
-        return response.json()
-      })
-      .then(data => {
-        setIsLoading(false)
-        console.log(data);
-        setJson(data)
-      })
+    //     setIsLoading(false)
+    //     }, 5000);
+    //     //console.log(response.json());
+    //     return response.json()
+    //   })
+    //   .then(data => {
+    //     setIsLoading(false)
+    //     console.log(data);
+    //     setJson(data)
+    //   })
   }
+
 
   const options = [
     'one', 'two', 'three'
@@ -78,6 +154,13 @@ function App() {
   const faculties = [
     { label: "Default", value: 1 }
   ];
+
+  //const faculties =()=>{
+
+    
+ // }
+
+  
 
   return (
     <div className="App">
@@ -117,9 +200,7 @@ function App() {
   timeout={10000}
 />}
 
-
-
-
+const fac = this.faculties();
 
 { json.length > 0 && 
 <div>
@@ -128,10 +209,17 @@ function App() {
           <div style={{color:"black",width:"150px"}} className="col-md-3"><label >
         Faculty: </label> </div>
           <div className="col-md-3">
-            <Select options={faculties} 
+          <Select options={faculties} 
                    value ={faculties[0]}
-                   
             />
+              {/* <Select
+        name="Faculty"
+        options={message}
+        //value={value}
+        //onChange={setValue}
+        getOptionLabel={(option) => message.faculty}
+        getOptionValue={(option) => message.faculty}
+      /> */}
           </div>
           <div className="col-md-4"></div>
         </div>
@@ -180,7 +268,7 @@ function App() {
     </tr>
     <tr>
       <td style={{color:"steelblue"}}>
-        Dinesh
+        {video.faculty}
       </td>
     </tr>
     <tr >
