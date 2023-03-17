@@ -37,6 +37,9 @@ function App() {
   const [json, setJson] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState('');
+  const [fac, setFac] = useState([
+    { label: "Default", value: 1 }
+  ]);
 
   // const fetchData = () => {
   //   setJson([]);
@@ -78,6 +81,21 @@ function App() {
   const newFac=()=>{
     const arr = []
     Object.keys(message).forEach(key => arr.push({name: key, value: message[key]}))
+    console.log(arr);
+  };
+
+  function changeFac(obj) {
+    //event.preventDefault();
+    // fetchData();
+    // console.log(obj)
+    // const { value } = obj.value;
+    // console.log(value);
+    // var objectJson =Object.assign([], message);
+    // var filteredJson = objectJson.filter(x=>x.faculty==value);
+    // setJson(filteredJson);
+    // if (value === 'Users') {
+    //   // ...
+    // }
   }
 
   const fetchData = () => {
@@ -85,27 +103,124 @@ function App() {
     console.log(physics);
     if(message.startsWith("phy"))
     {
-      setJson(physics)
+      setJson(physics);
+      var a =Object.assign([], physics);
+      var facArr = [
+        { label: "Default", value: 1 }
+      ];
+      var i =2;
+      a.forEach(function(x){
+        facArr.push({
+          label : x.faculty,
+          value : i
+        })
+        i++;
+      });
+      console.log("test");
+      console.log(facArr);
+      const unique = [...new Map(facArr.map((m) => [m.label, m])).values()];
+      setFac(unique);
+
     }
     if(message.startsWith("chem"))
     {
       setJson(chemistry)
+      var a =Object.assign([], chemistry);
+      var facArr = [
+        { label: "Default", value: 1 }
+      ];
+      var i =2;
+      a.forEach(function(x){
+        facArr.push({
+          label : x.faculty,
+          value : i
+        })
+        i++;
+      });
+      console.log("test");
+      console.log(facArr);
+      const unique = [...new Map(facArr.map((m) => [m.label, m])).values()];
+      setFac(unique);
     }
     if(message.startsWith("com"))
     {
       setJson(computer)
+      var a =Object.assign([], computer);
+      var facArr = [
+        { label: "Default", value: 1 }
+      ];
+      var i =2;
+      a.forEach(function(x){
+        facArr.push({
+          label : x.faculty,
+          value : i
+        })
+        i++;
+      });
+      console.log("test");
+      console.log(facArr);
+      const unique = [...new Map(facArr.map((m) => [m.label, m])).values()];
+      setFac(unique);
     }
     if(message.startsWith("geo"))
     {
       setJson(geography)
+      var a =Object.assign([], geography);
+      var facArr = [
+        { label: "Default", value: 1 }
+      ];
+      var i =2;
+      a.forEach(function(x){
+        facArr.push({
+          label : x.faculty,
+          value : i
+        })
+        i++;
+      });
+      console.log("test");
+      console.log(facArr);
+      const unique = [...new Map(facArr.map((m) => [m.label, m])).values()];
+      setFac(unique);
     }
     if(message.startsWith("ind"))
     {
       setJson(india)
+      var a =Object.assign([], india);
+      var facArr = [
+        { label: "Default", value: 1 }
+      ];
+      var i =2;
+      a.forEach(function(x){
+        facArr.push({
+          label : x.faculty,
+          value : i
+        })
+        i++;
+      });
+      console.log("test");
+      console.log(facArr);
+      const unique = [...new Map(facArr.map((m) => [m.label, m])).values()];
+      setFac(unique);
     }
     if(message.startsWith("mat"))
     {
       setJson(maths)
+      var a =Object.assign([], maths);
+      var facArr = [
+        { label: "Default", value: 1 }
+      ];
+      var i =2;
+      a.forEach(function(x){
+        facArr.push({
+          label : x.faculty,
+          value : i
+        })
+        i++;
+      });
+      console.log("test");
+      console.log(facArr);
+      const unique = [...new Map(facArr.map((m) => [m.label, m])).values()];
+      setFac(unique);
     }
    
     // setIsLoading(true)
@@ -209,8 +324,10 @@ const fac = this.faculties();
           <div style={{color:"black",width:"150px"}} className="col-md-3"><label >
         Faculty: </label> </div>
           <div className="col-md-3">
-          <Select options={faculties} 
-                   value ={faculties[0]}
+          <Select options={fac} 
+                   value ={fac[0]}
+                   onChange={(option) => changeFac(option)}
+                   //onChange={(e)=>changeFac(e)}
             />
               {/* <Select
         name="Faculty"
@@ -231,6 +348,7 @@ const fac = this.faculties();
           <div className="col-md-3">
             <Select options={faculties} 
                    value ={faculties[0]}
+                   onChange={(e) => changeFac(e.target.value)}
                    
             />
           </div>
