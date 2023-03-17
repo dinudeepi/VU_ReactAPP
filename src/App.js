@@ -40,6 +40,14 @@ function App() {
   const [fac, setFac] = useState([
     { label: "Default", value: 1 }
   ]);
+  const [domain, setDomain] = useState([
+    { label: "Default", value: 1 }
+  ]);
+
+  useEffect(()=>{
+    
+
+  },[json])
 
   // const fetchData = () => {
   //   setJson([]);
@@ -86,141 +94,195 @@ function App() {
 
   function changeFac(obj) {
     //event.preventDefault();
-    // fetchData();
-    // console.log(obj)
-    // const { value } = obj.value;
-    // console.log(value);
-    // var objectJson =Object.assign([], message);
-    // var filteredJson = objectJson.filter(x=>x.faculty==value);
-    // setJson(filteredJson);
+      //console.log(obj)
+    const value  = obj.label;
+    console.log(value);
+    console.log(json);
+    const jsonData = fetchData();
+    var objectJson =Object.assign([],jsonData );
+    console.log(objectJson);
+    if(value!="Default")
+    {
+    var filteredJson = objectJson.filter(x=>x.faculty==value);
+    console.log("filtered");
+    console.log(filteredJson);
+    setJson(filteredJson);
+    }
+    else{
+      setJson(objectJson);
+    }
+  }
+
+  function changeDomain(obj) {
+    //event.preventDefault();
+      console.log(obj)
+    const value  = obj.label;
+    console.log(value);
+    console.log(json);
+    const jsonData = fetchData();
+    var objectJson =Object.assign([],jsonData );
+    console.log(objectJson);
+    if(value!="Default")
+    {
+      
+    var filteredJson = objectJson.filter(x=>x.domain==value);
+    console.log("filtered");
+    console.log(filteredJson);
+    setJson(filteredJson);
+
+    }
+    else{
+      setJson(objectJson);
+    }
+  }
+    
     // if (value === 'Users') {
     //   // ...
     // }
-  }
+  //}
 
   const fetchData = () => {
     setJson([]);
     console.log(physics);
+    var facArr = [
+      { label: "Default", value: 1 }
+    ];
+
+    var domainArray = [
+      { label: "Default", value: 1 }
+    ];
+
     if(message.startsWith("phy"))
     {
       setJson(physics);
       var a =Object.assign([], physics);
-      var facArr = [
-        { label: "Default", value: 1 }
-      ];
+      
       var i =2;
       a.forEach(function(x){
         facArr.push({
           label : x.faculty,
           value : i
         })
+        domainArray.push({
+          label : x.domain,
+          value : i
+        })
         i++;
       });
-      console.log("test");
-      console.log(facArr);
       const unique = [...new Map(facArr.map((m) => [m.label, m])).values()];
+      const uniqueDomain = [...new Map(domainArray.map((m) => [m.label, m])).values()];
       setFac(unique);
+      setDomain(uniqueDomain);
+      return physics;
 
     }
     if(message.startsWith("chem"))
     {
       setJson(chemistry)
       var a =Object.assign([], chemistry);
-      var facArr = [
-        { label: "Default", value: 1 }
-      ];
       var i =2;
       a.forEach(function(x){
         facArr.push({
           label : x.faculty,
           value : i
         })
+        domainArray.push({
+          label : x.domain,
+          value : i
+        })
         i++;
       });
-      console.log("test");
-      console.log(facArr);
       const unique = [...new Map(facArr.map((m) => [m.label, m])).values()];
+      const uniqueDomain = [...new Map(domainArray.map((m) => [m.label, m])).values()];
       setFac(unique);
+      setDomain(uniqueDomain);
+      return chemistry;
     }
     if(message.startsWith("com"))
     {
       setJson(computer)
       var a =Object.assign([], computer);
-      var facArr = [
-        { label: "Default", value: 1 }
-      ];
       var i =2;
       a.forEach(function(x){
         facArr.push({
           label : x.faculty,
           value : i
         })
+        domainArray.push({
+          label : x.domain,
+          value : i
+        })
         i++;
       });
-      console.log("test");
-      console.log(facArr);
       const unique = [...new Map(facArr.map((m) => [m.label, m])).values()];
+      const uniqueDomain = [...new Map(domainArray.map((m) => [m.label, m])).values()];
       setFac(unique);
+      setDomain(uniqueDomain);
+      return computer;
     }
     if(message.startsWith("geo"))
     {
       setJson(geography)
       var a =Object.assign([], geography);
-      var facArr = [
-        { label: "Default", value: 1 }
-      ];
       var i =2;
       a.forEach(function(x){
         facArr.push({
           label : x.faculty,
           value : i
         })
+        domainArray.push({
+          label : x.domain,
+          value : i
+        })
         i++;
       });
-      console.log("test");
-      console.log(facArr);
       const unique = [...new Map(facArr.map((m) => [m.label, m])).values()];
+      const uniqueDomain = [...new Map(domainArray.map((m) => [m.label, m])).values()];
       setFac(unique);
+      setDomain(uniqueDomain);
+      return geography;
     }
     if(message.startsWith("ind"))
     {
       setJson(india)
       var a =Object.assign([], india);
-      var facArr = [
-        { label: "Default", value: 1 }
-      ];
-      var i =2;
       a.forEach(function(x){
         facArr.push({
           label : x.faculty,
           value : i
         })
+        domainArray.push({
+          label : x.domain,
+          value : i
+        })
         i++;
       });
-      console.log("test");
-      console.log(facArr);
       const unique = [...new Map(facArr.map((m) => [m.label, m])).values()];
+      const uniqueDomain = [...new Map(domainArray.map((m) => [m.label, m])).values()];
       setFac(unique);
+      setDomain(uniqueDomain);
+      return india;
     }
     if(message.startsWith("mat"))
     {
       setJson(maths)
       var a =Object.assign([], maths);
-      var facArr = [
-        { label: "Default", value: 1 }
-      ];
-      var i =2;
       a.forEach(function(x){
         facArr.push({
           label : x.faculty,
           value : i
         })
+        domainArray.push({
+          label : x.domain,
+          value : i
+        })
         i++;
       });
-      console.log("test");
-      console.log(facArr);
       const unique = [...new Map(facArr.map((m) => [m.label, m])).values()];
+      const uniqueDomain = [...new Map(domainArray.map((m) => [m.label, m])).values()];
       setFac(unique);
+      setDomain(uniqueDomain);
+      return maths;
     }
    
     // setIsLoading(true)
@@ -325,7 +387,7 @@ const fac = this.faculties();
         Faculty: </label> </div>
           <div className="col-md-3">
           <Select options={fac} 
-                   value ={fac[0]}
+                   defaultValue ={fac[0]}
                    onChange={(option) => changeFac(option)}
                    //onChange={(e)=>changeFac(e)}
             />
@@ -346,9 +408,9 @@ const fac = this.faculties();
           <div style={{color:"black",width:"150px"}} className="col-md-3"><label >
         Domain/Category: </label> </div>
           <div className="col-md-3">
-            <Select options={faculties} 
-                   value ={faculties[0]}
-                   onChange={(e) => changeFac(e.target.value)}
+            <Select options={domain} 
+                   defaultValue ={domain[0]}
+                   onChange={(option) => changeDomain(option)}
                    
             />
           </div>
