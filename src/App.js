@@ -285,32 +285,10 @@ function App() {
       return maths;
     }
    
-    // setIsLoading(true)
-    // fetch(url, {
-    //   mode: 'cors',
-    //   headers: {
-    //     'Access-Control-Allow-Origin':'*'
-    //   }
-    // })
-    //   .then(response => {
-    //     setTimeout(() => {
-          
-    //     setIsLoading(false)
-    //     }, 5000);
-    //     //console.log(response.json());
-    //     return response.json()
-    //   })
-    //   .then(data => {
-    //     setIsLoading(false)
-    //     console.log(data);
-    //     setJson(data)
-    //   })
+    
   }
 
 
-  const options = [
-    'one', 'two', 'three'
-  ];
   const defaultOption = options[0];
 
   useEffect(() => { document.body.style.backgroundColor = 'white' }, [])
@@ -332,12 +310,6 @@ function App() {
     { label: "Default", value: 1 }
   ];
 
-  //const faculties =()=>{
-
-    
- // }
-
-  
 
   return (
     <div className="App">
